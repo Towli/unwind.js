@@ -38,7 +38,7 @@ a:hover {
 /* Paint (canvas) styling */
 
 #paint-canvas {
-	border: 1px solid grey;
+	border: 2px solid grey;
 	width: 80%;
 	height: 80%;
 }
@@ -46,6 +46,7 @@ a:hover {
 /* Text-editor styling */
 
 #writing-pad {
+	border: 2px solid grey;
 	padding: 3em 4em 3em 4em;
 	height: 90%;
 	width: 60%;
