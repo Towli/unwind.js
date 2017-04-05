@@ -1,8 +1,38 @@
-body {
-  padding: 50px;
+html, body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+body {
+	padding: 40px;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+   	flex-direction: column;
+   	--webkit-align-items: center;
+   	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+}
+
+canvas {
+	border: 1px solid grey;
+}
+
+#paint-canvas {
+	width: 80%;
+	height: 80%;
 }

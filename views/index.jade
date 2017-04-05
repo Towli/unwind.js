@@ -1,5 +1,8 @@
-extends layout
+extends shared/layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p I want to...
+  a(href="/paint") paint
+  br
+  a(href="/write") write
