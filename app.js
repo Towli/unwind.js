@@ -1,4 +1,5 @@
 var express = require('express');
+var helmet = require('helmet');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -8,6 +9,9 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 
 var app = express();
+
+/* Use helmet early to ensure headers are sure to be set */
+app.use(helmet());
 
 /* Setup the view engine */
 app.set('views', path.join(__dirname, 'views'));
