@@ -7,7 +7,9 @@ $(document).ready(function() {
 	/* On pad-content change, begin auto-saving process */
 	pad.on('input',function() {
 		padContent = pad.val();
-		console.log(padContent);
+		$.post('/write', { data: padContent }).done(function(data) {
+			console.log('Post request complete.');
+		});
 	});
 
 });
