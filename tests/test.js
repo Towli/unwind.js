@@ -5,3 +5,14 @@ describe('Text Editor', function() {
 		})
 	})
 });
+
+describe('Canvas Client', function() {
+	describe('#getMousePosition', function() {
+		it('should return the old and new position of the mouse ', function() {
+			expect(getMousePosition()).to.have.property('x');
+			expect(getMousePosition()).to.have.property('y');
+			expect(getMousePosition()).to.have.property('OldX');
+			expect(getMousePosition()).to.have.property('OldY');
+		})
+	})
+});
