@@ -14,20 +14,25 @@ router.get('/paint', function(req, res, next) {
 
 /* GET write-app index page. */
 router.get('/write', function(req, res, next) {
+	var timestampStr = "";
+	if (req.session.timestamp)
+		timestampStr = "Last edit: " + req.session.timestamp;
 	res.render('editor/index', {
 		title: "write",
-		data: req.session.lastSave
+		content: req.session.lastSave,
+		timestamp: timestampStr
 	});
 });
 
 router.post('/write', function(req, res, next) {
-	var data = req.body.data;
-	req.session.lastSave = data;
-	var response = {
-		status: 200,
-		success: 'Text-editor data received successfully'
-	};
-	res.end(JSON.stringify(response));
+	var content = req.body.data;
+	var currentDate = new Date();
+	currentDate = currentDate.toUTCString();
+
+	req.session.lastSave = content;
+	req.session.timestamp = currentDate;
+
+	res.end(currentDate);
 });
 
 module.exports = router;

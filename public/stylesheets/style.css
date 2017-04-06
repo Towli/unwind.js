@@ -53,3 +53,10 @@ a:hover {
 	font-size: 16px;
 	resize: none;
 }
+
+#notifier {
+	height: 5px;
+	font-style: italic;
+	margin-bottom: 2em;
+	color: #3c3c3c;
+}
