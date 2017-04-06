@@ -4,20 +4,23 @@
 * - Should auto-save after X seconds of user input has ended.
 **/
 $(document).ready(function() {
+	
 	var pad = $('#writing-pad');
-	var padContent;
-	var timer;
+	var padContent, timer;
 	var timerDuration = 2000;
-
 	pad.attr('placeholder', "Tell us your story...");
 
+	padEventHandler();
+
 	/* On pad-content change, begin auto-saving process */
-	pad.on('input',function() {
-		listen(timerDuration, save);
-	});
+	function padEventHandler() {
+		pad.on('input',function() {
+			listen(timerDuration, save);
+		});
+	}
 
 	/* 'Listen' to event by starting a timer and waiting for a 
-	silence duration to be met */
+			silence duration to be met */
 	function listen(silenceDuration, callback) {
 		clearTimeout(timer);
 		timer = setTimeout(callback, silenceDuration);
