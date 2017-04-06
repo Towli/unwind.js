@@ -1,5 +1,7 @@
-describe("A test suite", function() {
-   beforeEach(function() { });
-   afterEach(function() { });
-   it('should fail', function() { expect(true).to.be.false; });
+describe('Text Editor', function() {
+	describe('#autoSave()', function() {
+		it('should set an interval on key press', function() {
+			// TODO
+		})
+	})
 });
