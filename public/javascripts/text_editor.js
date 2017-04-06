@@ -1,26 +1,34 @@
+/**
+* Text editor client script
+* - On user input, begin 'listening'.
+* - Should auto-save after X seconds of user input has ended.
+**/
 $(document).ready(function() {
 	var pad = $('#writing-pad');
-	var padContent = "";
-	var isSaving = false;
+	var padContent;
+	var timer;
+	var timerDuration = 2000;
 
 	pad.attr('placeholder', "Tell us your story...");
 
 	/* On pad-content change, begin auto-saving process */
 	pad.on('input',function() {
-		if (isSaving)
-			return;
-
-		padContent = pad.val();
-		
-		isSaving = true;
-		$.post('/write', { data: padContent }).done(function(data) {
-			console.log('Post request complete.');
-			setTimeout(function() {
-				isSaving = false;
-				console.log("Timeout expired - ready to save again.");
-			}, 2000);
-		});
-	
+		listen(timerDuration, save);
 	});
+
+	/* 'Listen' to event by starting a timer and waiting for a 
+	silence duration to be met */
+	function listen(silenceDuration, callback) {
+		clearTimeout(timer);
+		timer = setTimeout(callback, silenceDuration);
+	}
+
+	/* POST content of pad to the server */
+	function save() {
+		padContent = pad.val();
+		$.post('/write', { data: padContent }).done(function(data) {
+				console.log('Post request complete.');
+		});
+	}
 
 });
