@@ -54,9 +54,15 @@ function handleMouseMove(event) {
 }
 
 function handleMouseDown(event) {
-	// draw()
+	draw();
 }
 
 function draw(mousePosition) {
-	// draw a path from the old.x,y to the new x,y
+  context.beginPath();
+  context.moveTo(mouse.oldX, mouse.oldY);
+  context.lineTo(mouse.x, mouse.y);
+  context.strokeStyle = COLOUR_BLACK;
+  context.lineWidth = 2;
+  context.stroke();
+  context.closePath();
 }
