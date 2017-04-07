@@ -12,6 +12,7 @@ var canvas;
 var context;
 var mouseDown;
 var brushColour;
+var downloadLink;
 
 /* Temporarily global.. better implementation? */
 var mouse = {
@@ -25,6 +26,7 @@ var mouse = {
 function onReady() {
 	canvas = document.getElementById('paint-canvas');
 	context = canvas.getContext('2d');
+  downloadLink = $('a.canvas-action');
 	canvas.width = CANVAS_WIDTH;
 	canvas.height = CANVAS_HEIGHT;
 	brushColour = COLOUR_BLACK;
@@ -37,6 +39,13 @@ function onReady() {
 	canvas.addEventListener('mousedown', handleMouseDown);
 	canvas.addEventListener('mouseup', handleMouseInactive);
 	canvas.addEventListener('mouseleave', handleMouseInactive);
+  downloadLink.click(downloadImage);
+}
+
+function downloadImage() {
+  var image = canvas.toDataURL('image/png');
+  var imageByteStream = image.replace('image/png', 'image/octet-stream');
+  downloadLink.attr('href', imageByteStream);
 }
 
 function initColourChooser() {
