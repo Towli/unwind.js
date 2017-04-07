@@ -13,8 +13,8 @@ var context;
 var mouseDown;
 var brushColour;
 var downloadLink;
+var resetLink;
 
-/* Temporarily global.. better implementation? */
 var mouse = {
 	oldX: "",
 	oldY: "",
@@ -24,32 +24,29 @@ var mouse = {
 
 /* Init */
 function onReady() {
-	canvas = document.getElementById('paint-canvas');
-	context = canvas.getContext('2d');
-  downloadLink = $('a.canvas-action');
-	canvas.width = CANVAS_WIDTH;
-	canvas.height = CANVAS_HEIGHT;
-  context.fillStyle = "white";
-  context.fillRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
-	brushColour = COLOUR_BLACK;
+  initCanvas();
+  initColourChooser();
+  downloadLink = $('a.canvas-action#download');
+  resetLink = $('a.canvas-action#reset');
 	mouseDown = false;
-
-	initColourChooser();
-
 	/* Attach event listeners to the Canvas object */
 	canvas.addEventListener('mousemove', handleMouseMove);
 	canvas.addEventListener('mousedown', handleMouseDown);
 	canvas.addEventListener('mouseup', handleMouseInactive);
 	canvas.addEventListener('mouseleave', handleMouseInactive);
+  resetLink.click(resetCanvas);
   downloadLink.click(downloadImage);
 }
 
-function downloadImage() {
-  var image = canvas.toDataURL('image/png');
-  var imageByteStream = image.replace('image/png', 'image/octet-stream');
-  downloadLink.attr('href', imageByteStream);
+function initCanvas() {
+  canvas = document.getElementById('paint-canvas');
+  context = canvas.getContext('2d');
+  canvas.width = CANVAS_WIDTH;
+  canvas.height = CANVAS_HEIGHT;
+  context.fillStyle = "white";
+  context.fillRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+  brushColour = COLOUR_BLACK;
 }
-
 function initColourChooser() {
 	$('#picker').spectrum({
     showButtons: false,
@@ -80,6 +77,20 @@ function draw(mousePosition) {
   context.lineWidth = 2;
   context.stroke();
   context.closePath();
+}
+
+function resetCanvas() {
+  context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  context.fillStyle = "white";
+  context.fillRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+}
+
+/* Convert the Canvas object to a DataURI, build a bytestream object 
+  and set to the downloadLink's href attribute */
+function downloadImage() {
+  var image = canvas.toDataURL('image/png');
+  var imageByteStream = image.replace('image/png', 'image/octet-stream');
+  downloadLink.attr('href', imageByteStream);
 }
 
 /* Event handlers */
