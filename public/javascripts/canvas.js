@@ -8,10 +8,10 @@ var COLOUR_BLACK = "rgb(0,0,0)";
 var CANVAS_WIDTH = 1000;
 var CANVAS_HEIGHT = 1000;
 
-/* Get canvas & context */
 var canvas;
 var context;
 var mouseDown;
+var brushColour;
 
 /* Temporarily global.. better implementation? */
 var mouse = {
@@ -24,16 +24,26 @@ var mouse = {
 /* Init */
 function onReady() {
 	canvas = document.getElementById('paint-canvas');
-	context = canvas.getContext("2d");
+	context = canvas.getContext('2d');
 	canvas.width = CANVAS_WIDTH;
 	canvas.height = CANVAS_HEIGHT;
+	brushColour = COLOUR_BLACK;
 	mouseDown = false;
+
+	initColourChooser();
 
 	/* Attach event listeners to the Canvas object */
 	canvas.addEventListener('mousemove', handleMouseMove);
 	canvas.addEventListener('mousedown', handleMouseDown);
 	canvas.addEventListener('mouseup', handleMouseInactive);
 	canvas.addEventListener('mouseleave', handleMouseInactive);
+}
+
+function initColourChooser() {
+	$('#picker').spectrum({
+    showButtons: false,
+    change: handleColourChange
+  });
 }
 
 /* Get the mouse position by using the ratio of the canvas bitmap and the actual canvas
@@ -55,7 +65,7 @@ function draw(mousePosition) {
   context.beginPath();
   context.moveTo(mouse.oldX, mouse.oldY);
   context.lineTo(mouse.x, mouse.y);
-  context.strokeStyle = COLOUR_BLACK;
+  context.strokeStyle = brushColour;
   context.lineWidth = 2;
   context.stroke();
   context.closePath();
@@ -76,4 +86,9 @@ function handleMouseDown() {
 function handleMouseInactive() {
 	mouseDown = false;
   console.log('Mouse inactive');
+}
+function handleColourChange(newColour) {
+	var newColourRGB = 'rgb('+parseInt(newColour._r) +','+ parseInt(newColour._g) +','+ parseInt(newColour._g)+')';
+	brushColour = newColourRGB;
+	console.log(brushColour);
 }

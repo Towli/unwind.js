@@ -2,6 +2,9 @@ extends ../shared/layout
 
 block scripts
 	script(src="javascripts/canvas.js")
+	link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js")
+	link(rel="stylesheet", href="/stylesheets/style.css")
 
 block content
 		a(href="/") ← Go back
@@ -9,6 +12,6 @@ block content
 		.container
 			#canvas-frame
 				.canvas-actions-top
-					a#canvas-action Colour
-					a#canvas-action Save
+					input#picker.canvas-action
+					a.canvas-action Save
 				canvas(id="paint-canvas")

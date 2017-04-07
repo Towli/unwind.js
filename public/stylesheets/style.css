@@ -70,8 +70,8 @@ a:hover {
   width: 100%;
 }
 
-#canvas-action {
-	padding: 0.5em;
+.canvas-action {
+	align-self: center;
 }
 
 
@@ -80,6 +80,12 @@ a:hover {
 	height: 95%;
 	width: 100%;
 	cursor: crosshair;
+}
+
+.sp-replacer.sp-light {
+	border: 0;
+	background-color: #cccccc;
+	margin-bottom: 4px;
 }
 
 /* Text-editor styling */
