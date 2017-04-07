@@ -1,18 +1,20 @@
 describe('Text Editor', function() {
 	describe('#autoSave()', function() {
 		it('should set an interval on key press', function() {
-			// TODO
 		})
 	})
 });
 
 describe('Canvas Client', function() {
-	describe('#getMousePosition', function() {
+	describe('#getMousePos', function() {
 		it('should return the old and new position of the mouse ', function() {
-			expect(getMousePosition()).to.have.property('x');
-			expect(getMousePosition()).to.have.property('y');
-			expect(getMousePosition()).to.have.property('OldX');
-			expect(getMousePosition()).to.have.property('OldY');
+			var canvas = document.createElement('canvas');
+			var stub = sinon.stub();
+			var spy = sinon.spy();
+			expect(getMousePos(canvas, stub)).to.have.property('x');
+			expect(getMousePos(canvas, stub)).to.have.property('y');
+			expect(getMousePos(canvas, stub)).to.have.property('oldX');
+			expect(getMousePos(canvas, stub)).to.have.property('oldY');
 		})
 	})
 });
