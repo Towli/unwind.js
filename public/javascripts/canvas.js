@@ -29,6 +29,8 @@ function onReady() {
   downloadLink = $('a.canvas-action');
 	canvas.width = CANVAS_WIDTH;
 	canvas.height = CANVAS_HEIGHT;
+  context.fillStyle = "white";
+  context.fillRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
 	brushColour = COLOUR_BLACK;
 	mouseDown = false;
 
