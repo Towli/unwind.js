@@ -1,7 +1,6 @@
 /**
 * Canvas editor client script
 **/
-/* Function expressions for hoisting (in order to effectively test) */
 $(document).ready(onReady);
 
 /* Constants */
@@ -22,6 +21,7 @@ var mouse = {
 	y: ""
 }
 
+/* Init */
 function onReady() {
 	canvas = document.getElementById('paint-canvas');
 	context = canvas.getContext("2d");
@@ -32,8 +32,8 @@ function onReady() {
 	/* Attach event listeners to the Canvas object */
 	canvas.addEventListener('mousemove', handleMouseMove);
 	canvas.addEventListener('mousedown', handleMouseDown);
-	canvas.addEventListener('mouseup', handleMouseUp);
-  //canvas.addEventListener('mouseleave', handleMouseInactive);
+	canvas.addEventListener('mouseup', handleMouseInactive);
+	canvas.addEventListener('mouseleave', handleMouseInactive);
 }
 
 /* Get the mouse position by using the ratio of the canvas bitmap and the actual canvas
@@ -50,24 +50,7 @@ function getMousePos(canvas, event) {
   }
 }
 
-function handleMouseMove(event) {
-	mouse = getMousePos(canvas, event);
-	if(mouseDown)
-    draw();
-  console.log(mouse);
-}
-
-function handleMouseDown(event) {
-	mouseDown = true;
-	if (mouseDown)
-		draw();
-}
-
-function handleMouseUp(event) {
-	mouseDown = false;
-  console.log('Mouse inactive');
-}
-
+/* Draw using the path building API */
 function draw(mousePosition) {
   context.beginPath();
   context.moveTo(mouse.oldX, mouse.oldY);
@@ -76,4 +59,21 @@ function draw(mousePosition) {
   context.lineWidth = 2;
   context.stroke();
   context.closePath();
+}
+
+/* Event handlers */
+function handleMouseMove() {
+	mouse = getMousePos(canvas, event);
+	if(mouseDown)
+    draw();
+  console.log(mouse);
+}
+function handleMouseDown() {
+	mouseDown = true;
+	if (mouseDown)
+		draw();
+}
+function handleMouseInactive() {
+	mouseDown = false;
+  console.log('Mouse inactive');
 }
