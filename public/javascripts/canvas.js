@@ -26,9 +26,12 @@ function onReady() {
 	context = canvas.getContext("2d");
 	canvas.width = CANVAS_WIDTH;
 	canvas.height = CANVAS_HEIGHT;
-	
+
 	/* Attach event listeners to the Canvas object */
 	canvas.addEventListener('mousemove', handleMouseMove);
+	canvas.addEventListener('mousedown', handleMouseDown);
+	//canvas.addEventListener('mouseup', handleMouseInactive);
+  //canvas.addEventListener('mouseleave', handleMouseInactive);
 }
 
 /* Get the mouse position by using the ratio of the canvas bitmap and the actual canvas
@@ -48,4 +51,12 @@ function getMousePos(canvas, event) {
 function handleMouseMove(event) {
 	mouse = getMousePos(canvas, event);
   console.log(mouse);
+}
+
+function handleMouseDown(event) {
+	// draw()
+}
+
+function draw(mousePosition) {
+	// draw a path from the old.x,y to the new x,y
 }
