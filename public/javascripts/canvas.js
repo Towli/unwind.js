@@ -12,6 +12,7 @@ var CANVAS_HEIGHT = 1000;
 /* Get canvas & context */
 var canvas;
 var context;
+var mouseDown;
 
 /* Temporarily global.. better implementation? */
 var mouse = {
@@ -26,11 +27,12 @@ function onReady() {
 	context = canvas.getContext("2d");
 	canvas.width = CANVAS_WIDTH;
 	canvas.height = CANVAS_HEIGHT;
+	mouseDown = false;
 
 	/* Attach event listeners to the Canvas object */
 	canvas.addEventListener('mousemove', handleMouseMove);
 	canvas.addEventListener('mousedown', handleMouseDown);
-	//canvas.addEventListener('mouseup', handleMouseInactive);
+	canvas.addEventListener('mouseup', handleMouseUp);
   //canvas.addEventListener('mouseleave', handleMouseInactive);
 }
 
@@ -50,11 +52,20 @@ function getMousePos(canvas, event) {
 
 function handleMouseMove(event) {
 	mouse = getMousePos(canvas, event);
+	if(mouseDown)
+    draw();
   console.log(mouse);
 }
 
 function handleMouseDown(event) {
-	draw();
+	mouseDown = true;
+	if (mouseDown)
+		draw();
+}
+
+function handleMouseUp(event) {
+	mouseDown = false;
+  console.log('Mouse inactive');
 }
 
 function draw(mousePosition) {
