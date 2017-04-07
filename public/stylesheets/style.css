@@ -6,15 +6,17 @@
 /* General (shared) styling */
 html, body {
 	height: 100%;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	background-color: #ececec;
 }
 
 body {
 	padding: 40px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+  cursor: pointer;
   text-decoration: none;
 }
 
@@ -22,7 +24,66 @@ a:hover {
 	text-decoration: underline;
 }
 
+.page-title {
+	text-align: center;
+	color: #4c4c4c;
+}
+
 .container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+ 	justify-content: center;
+ 	height: 100%;
+ 	width: 100%;
+}
+
+/* Paint (canvas) styling */
+#canvas-frame {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+ 	justify-content: center;
+	background-color: #cccccc;
+	border: 5px solid #cccccc;
+	height: 100%;
+	width: 70%;
+}
+
+.canvas-actions-top {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-justify-content: space-around;
+ 	justify-content: space-around;
+ 	-webkit-align-items: center;
+	align-items: center;
+  width: 100%;
+}
+
+#canvas-action {
+	padding: 0.5em;
+}
+
+
+#paint-canvas {
+	background-color: white;
+	height: 95%;
+	width: 100%;
+	cursor: crosshair;
+}
+
+/* Text-editor styling */
+.pad-container {
 	display: -webkit-flex;
 	display: flex;
 	-webkit-flex-direction: column;
@@ -35,20 +96,10 @@ a:hover {
 	width: 100%;
 }
 
-/* Paint (canvas) styling */
-
-#paint-canvas {
-	border: 2px solid grey;
-	width: 80%;
-	height: 80%;
-}
-
-/* Text-editor styling */
-
 #writing-pad {
 	border: 2px solid grey;
 	padding: 3em 4em 3em 4em;
-	height: 90%;
+	height: 150%;
 	width: 60%;
 	font-size: 16px;
 	resize: none;

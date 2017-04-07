@@ -4,7 +4,11 @@ block scripts
 	script(src="javascripts/canvas.js")
 
 block content
-	.container
 		a(href="/") ← Go back
-		h1= title
-		canvas(id="paint-canvas")
+		h1.page-title= title
+		.container
+			#canvas-frame
+				.canvas-actions-top
+					a#canvas-action Colour
+					a#canvas-action Save
+				canvas(id="paint-canvas")
