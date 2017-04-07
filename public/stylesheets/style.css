@@ -6,7 +6,7 @@
 /* General (shared) styling */
 html, body {
 	height: 100%;
-	background-color: #ececec;
+	background-color: #191919;
 }
 
 body {
@@ -25,8 +25,9 @@ a:hover {
 }
 
 .page-title {
+	font-size: 32px;
 	text-align: center;
-	color: #4c4c4c;
+	color: white;
 }
 
 .container {
@@ -42,6 +43,41 @@ a:hover {
  	width: 100%;
 }
 
+/* Landing page styling */
+.landing-container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+ 	justify-content: center;
+}
+
+.interactive-sentence {
+	margin-top: 2em;
+}
+
+.interactive-sentence p {
+	display: inline;
+	color: white;
+	font-size: 22px;
+}
+
+.interactive-sentence a {
+	display: inline;
+	font-size: 22px;
+	text-decoration: line-through;
+}
+
+.interactive-sentence a:hover {
+	display: inline;
+	font-size: 22px;
+	text-decoration: none;
+	font-style: bold;
+}
+
 /* Paint (canvas) styling */
 #canvas-frame {
 	display: -webkit-flex;
@@ -52,8 +88,8 @@ a:hover {
 	align-items: center;
 	-webkit-justify-content: center;
  	justify-content: center;
-	background-color: #cccccc;
-	border: 5px solid #cccccc;
+	background-color: #262626;
+	border: 5px solid #262626;
 	height: 100%;
 	width: 70%;
 }
@@ -115,5 +151,5 @@ a:hover {
 	height: 5px;
 	font-style: italic;
 	margin-bottom: 2em;
-	color: #3c3c3c;
+	color: #D3D3D3;
 }
