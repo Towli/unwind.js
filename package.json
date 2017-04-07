@@ -15,7 +15,9 @@
     "helmet": "^3.5.0",
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "spectrum-colorpicker": "^1.8.0",
+    "tinycolor": "0.0.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
