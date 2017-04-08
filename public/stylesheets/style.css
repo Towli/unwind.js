@@ -11,7 +11,7 @@ html, body {
 
 body {
 	padding: 40px;
-	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
 a {
@@ -24,10 +24,23 @@ a:hover {
 	text-decoration: underline;
 }
 
-.page-title {
-	font-size: 32px;
+.landing-page-title {
+	font-size: 50px;
 	text-align: center;
 	color: white;
+}
+
+.page-title {
+	font-size: 50px;
+	text-align: center;
+	color: white;
+}
+
+@media (max-width: 480px) {
+	.landing-page-title {
+		font-size: 64px;
+		color: red;
+	}	
 }
 
 .container {
@@ -57,6 +70,8 @@ a:hover {
 
 .interactive-sentence {
 	margin-top: 2em;
+	display: inline;
+	font-size: 22px;
 }
 
 .interactive-sentence p {
@@ -66,9 +81,14 @@ a:hover {
 }
 
 .interactive-sentence a {
-	display: inline;
-	font-size: 22px;
 	text-decoration: line-through;
+	font-size: 22px;
+}
+
+@media (max-width: 480px) {
+	.interactive-sentence p, .interactive-sentence a {
+		font-size: 26px;
+	}
 }
 
 .interactive-sentence a:hover {
@@ -92,6 +112,12 @@ a:hover {
 	border: 5px solid #262626;
 	height: 100%;
 	width: 70%;
+}
+
+@media (max-width: 768px) {
+	#canvas-frame {
+		width: 100%;
+	}
 }
 
 .canvas-actions-top {
