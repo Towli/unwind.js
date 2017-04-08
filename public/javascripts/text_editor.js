@@ -1,7 +1,7 @@
 /**
 * Text editor client script
 * - On user input, begin 'listening'.
-* - Should auto-save after X seconds of user input has ended.
+* - Auto-saves after X seconds of user input has ended.
 **/
 $(document).ready(function() {
 	

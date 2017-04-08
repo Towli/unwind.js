@@ -24,6 +24,7 @@ router.get('/write', function(req, res, next) {
 	});
 });
 
+/* POST write-app -> handles response to AJAX calls */
 router.post('/write', function(req, res, next) {
 	var content = req.body.data;
 	var currentDate = new Date();
