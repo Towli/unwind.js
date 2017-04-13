@@ -16,10 +16,10 @@ var downloadLink;
 var resetLink;
 
 var mouse = {
-	oldX: "",
-	oldY: "",
-	x: "",
-	y: ""
+  oldX: "",
+  oldY: "",
+  x: "",
+  y: ""
 }
 
 /* Init */
@@ -28,12 +28,12 @@ function onReady() {
   initColourChooser();
   downloadLink = $('a.canvas-action#download');
   resetLink = $('a.canvas-action#reset');
-	mouseDown = false;
-	/* Attach event listeners to the Canvas object */
-	canvas.addEventListener('mousemove', handleMouseMove);
-	canvas.addEventListener('mousedown', handleMouseDown);
-	canvas.addEventListener('mouseup', handleMouseInactive);
-	canvas.addEventListener('mouseleave', handleMouseInactive);
+  mouseDown = false;
+  /* Attach event listeners to the Canvas object */
+  canvas.addEventListener('mousemove', handleMouseMove);
+  canvas.addEventListener('mousedown', handleMouseDown);
+  canvas.addEventListener('mouseup', handleMouseInactive);
+  canvas.addEventListener('mouseleave', handleMouseInactive);
   resetLink.click(resetCanvas);
   downloadLink.click(downloadImage);
 }
@@ -48,7 +48,7 @@ function initCanvas() {
   brushColour = COLOUR_BLACK;
 }
 function initColourChooser() {
-	$('#picker').spectrum({
+  $('#picker').spectrum({
     showButtons: false,
     change: handleColourChange
   });
@@ -95,22 +95,22 @@ function downloadImage() {
 
 /* Event handlers */
 function handleMouseMove() {
-	mouse = getMousePos(canvas, event);
-	if(mouseDown)
+  mouse = getMousePos(canvas, event);
+  if(mouseDown)
     draw();
   console.log(mouse);
 }
 function handleMouseDown() {
-	mouseDown = true;
-	if (mouseDown)
-		draw();
+  mouseDown = true;
+  if (mouseDown)
+    draw();
 }
 function handleMouseInactive() {
-	mouseDown = false;
+  mouseDown = false;
   console.log('Mouse inactive');
 }
 function handleColourChange(newColour) {
-	var newColourRGB = 'rgb('+parseInt(newColour._r) +','+ parseInt(newColour._g) +','+ parseInt(newColour._g)+')';
-	brushColour = newColourRGB;
-	console.log(brushColour);
+  var newColourRGB = 'rgb('+parseInt(newColour._r) +','+ parseInt(newColour._g) +','+ parseInt(newColour._g)+')';
+  brushColour = newColourRGB;
+  console.log(brushColour);
 }

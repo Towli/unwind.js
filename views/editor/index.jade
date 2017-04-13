@@ -1,14 +1,14 @@
 extends ../shared/layout
 
 block scripts
-	script(src="javascripts/text_editor.js")
-	link(rel="stylesheet", href="/stylesheets/style.css")
-	
+  script(src="javascripts/text_editor.js")
+  link(rel="stylesheet", href="/stylesheets/style.css")
+  
 block content
-	a(href="/") ← Go back
-	.pad-container
-		h1.page-title= title
-		#notifier
-			=timestamp
-		textarea#writing-pad
-			=content
+  a(href="/") ← Go back
+  .pad-container
+    h1.page-title= title
+    #notifier
+      =timestamp
+    textarea#writing-pad
+      =content

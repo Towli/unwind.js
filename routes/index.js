@@ -14,26 +14,26 @@ router.get('/paint', function(req, res, next) {
 
 /* GET write-app index page. */
 router.get('/write', function(req, res, next) {
-	var timestampStr = "";
-	if (req.session.timestamp)
-		timestampStr = "Last edit: " + req.session.timestamp;
-	res.render('editor/index', {
-		title: "write",
-		content: req.session.lastSave,
-		timestamp: timestampStr
-	});
+  var timestampStr = "";
+  if (req.session.timestamp)
+    timestampStr = "Last edit: " + req.session.timestamp;
+  res.render('editor/index', {
+    title: "write",
+    content: req.session.lastSave,
+    timestamp: timestampStr
+  });
 });
 
 /* POST write-app -> handles response to AJAX calls */
 router.post('/write', function(req, res, next) {
-	var content = req.body.data;
-	var currentDate = new Date();
-	currentDate = currentDate.toUTCString();
+  var content = req.body.data;
+  var currentDate = new Date();
+  currentDate = currentDate.toUTCString();
 
-	req.session.lastSave = content;
-	req.session.timestamp = currentDate;
+  req.session.lastSave = content;
+  req.session.timestamp = currentDate;
 
-	res.end(currentDate);
+  res.end(currentDate);
 });
 
 module.exports = router;

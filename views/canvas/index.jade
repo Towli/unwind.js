@@ -1,18 +1,18 @@
 extends ../shared/layout
 
 block scripts
-	script(src="javascripts/canvas.js")
-	link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css")
-	script(src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js")
-	link(rel="stylesheet", href="/stylesheets/style.css")
+  script(src="javascripts/canvas.js")
+  link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js")
+  link(rel="stylesheet", href="/stylesheets/style.css")
 
 block content
-		a(href="/") ← Go back
-		h1.page-title= title
-		.container
-			#canvas-frame
-				.canvas-actions-top
-					input#picker.canvas-action
-					a(download="unwind-painting.png").canvas-action#download Save
-					a.canvas-action#reset Reset
-				canvas(id="paint-canvas")
+    a(href="/") ← Go back
+    h1.page-title= title
+    .container
+      #canvas-frame
+        .canvas-actions-top
+          input#picker.canvas-action
+          a(download="unwind-painting.png").canvas-action#download Save
+          a.canvas-action#reset Reset
+        canvas(id="paint-canvas")
