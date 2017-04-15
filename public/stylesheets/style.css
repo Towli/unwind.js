@@ -81,8 +81,13 @@ a:hover {
 }
 
 .interactive-sentence a {
-  text-decoration: line-through;
+  color: #191919;
+  background-color: #00B7FF;
+  border: 2px solid #00B7FF;
+  border-radius: 8px;
+  line-height: 22px;
   font-size: 22px;
+  margin-right: 2px;
 }
 
 @media (max-width: 480px) {
@@ -92,8 +97,8 @@ a:hover {
 }
 
 .interactive-sentence a:hover {
-  display: inline;
-  font-size: 22px;
+  background-color: #191919;
+  color: #00B7FF;
   text-decoration: none;
   font-style: bold;
 }
